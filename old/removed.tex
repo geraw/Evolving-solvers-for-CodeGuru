@@ -1,0 +1,82 @@
+Let us compare the best half of the best individual from this generation and one before it as showed in \ref{generation_com}.
+\begin{figure}
+\centering
+\begin{subfigure}[t]{0.48\textwidth}
+    \begin{assembly}
+    @start:
+    not WORD [si + 0x36 + 0x236 + 0x198 + 65535]
+    cmc
+    and [si + 0x252], cx
+    xchg bx, [si + 0x262]
+    jns l116331
+    neg BYTE [si + 0x190]
+    l116331:
+    and [si], bx
+    add cl, 0x124
+    jns l116332
+    l116332:
+    mov [si + 0x152], di
+    rcr si, 1
+    ! \textcolor{red}{adc [si + 0x242], cx} !
+    jmp ax
+    loop l116333
+    inc WORD [bx + 0x264]
+    cmc
+    and [bx + 0x172 + 0x-20 + 0x104], di
+    call near [si]
+    xchg cl, [bx]
+    l116333:
+    cmp ah, ch
+    xchg dl, [bp + 0x100 + 0x90 + 0x188 + 0x252 + 0x96 + 0x36]
+    dw 0x-6
+    int 0x86
+    int 0x87
+    jmp ax
+    @end:
+    \end{assembly}
+    \caption{Best individual generation 111}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.49\textwidth}
+    \begin{assembly}
+    @start:
+    not WORD [si + 0x36 + 0x236 + 0x198 + 65535]
+    cmc
+    and [si + 0x252], cx
+    xchg bx, [si + 0x262]
+    jns l116597
+    neg BYTE [bx + 0x158 + 0x18 + 0x132]
+    l116597:
+    and [si], bx
+    add cl, 0x124
+    jns l116598
+    l116598:
+    mov [si + 0x152], di
+    rcr si, 1
+    adc [si + 0x242], ax
+    jmp ax
+    loop l116599
+    inc WORD [bx + 65535]
+    cmc
+    and [si + 0x104], di
+    call near [si]
+    xchg cl, [bx]
+    l116599:
+    cmp ah, ch
+    xchg dl, [bp + 0x100 + 0x90 + 0x188 + 0x252 + 0x96 + 0x36]
+    dw 0x-6
+    int 0x86
+    int 0x87
+    jmp ax
+    @end:
+    \end{assembly}
+    \caption{Best individual generation 112}
+\end{subfigure}
+\caption{Generations comparison}
+\label{generation_com}
+\end{figure}
+
+The differences between the programs are in label enumeration (which does not affect the code), in used constants (lines 7, 18, 20), in addressing registers (lines 7, 20) and in register operand (line 15). According to the program flow, only lines 1-16 , except 7, are executed. Thus, the only change which helped the winning was changing cx to ax in line 15. This change happened as a result of mutation applied on the matching terminal. The other noticeable jumps happen in generations 150, 159, 161, 171, 178. It is important to note the game's engine has integrated randomness, thus not all these wins were restored on the web engine. 
+
+The command "rcr si , 1" changes the value of si, thus making all the instructions using it as a pointer to write on various memory address which is a good attacking technique. The same happens with bx, which value is exchanged with the content on a changing memory address pointed by si. This pattern is present in all second parts of the individuals. 
+ As showed, small changes were needed to upgrade the evolved code for to reach stable wins.

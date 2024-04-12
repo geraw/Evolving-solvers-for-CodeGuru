@@ -1,0 +1,75 @@
+% \usepackage[utf8]{inputenc} % allow utf-8 input
+% \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+
+% \usepackage{amsfonts}       % blackboard math symbols
+% \usepackage{amsmath}
+% \usepackage{amsthm}
+% \theoremstyle{definition}
+% \newtheorem{definition}{Definition}
+
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{color}
+\usepackage{qrcode}
+
+
+% \PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
+\usepackage{hyperref}
+\renewcommand{\sectionautorefname}{Section}
+\renewcommand{\subsectionautorefname}{Section}
+\renewcommand{\subsubsectionautorefname}{Section}
+\newcommand{\definitionautorefname}{Definition}
+
+\usepackage{xspace}
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\cf}{cf.,\xspace}
+
+% \usepackage{adjustbox}
+% \usepackage{wrapfig}
+% \usepackage{caption,subcaption}
+
+\newcommand{\achiya}[1]{{\textcolor{red}{[Achiya: #1]}}}
+\newcommand{\irina}[1]{{\textcolor{blue}{[Achiya: #1]}}}
+
+\usepackage{listings}
+\usepackage{ulem}
+%\usepackage{multirow}
+%\usepackage{titlesec}
+
+\lstset{
+    escapeinside={!}{!},
+    language=[x86masm]Assembler,
+    basicstyle=\scriptsize,
+    keywordstyle=\bfseries,
+    commentstyle=\itshape,
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=6pt, 
+    frame=lines,
+    breaklines=true
+}
+\AtBeginDocument{\DeclareCaptionSubType{lstlisting}}
+\newcommand{\lstin}[2][]{\lstinline[#1]|#2|}
+
+\usepackage{framed}
+\newenvironment{BNF}
+  {\captionsetup{type=lstlisting}}
+  {}
+\usepackage[nounderscore]{syntax}
+\setlength{\grammarparsep}{0.1cm}
+\setlength{\grammarindent}{2em}
+
+\usepackage[para,flushleft]{threeparttable}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+
+
+\usepackage{multirow}
+\usepackage{dblfloatfix}
+\usepackage{balance} 
